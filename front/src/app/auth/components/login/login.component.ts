@@ -32,13 +32,14 @@ export class LoginComponent implements OnInit {
 
     const obs$ = this.auth.logIn().subscribe(res=>{
       console.log(res)
+
       const user = res.find((u:any)=>{
         return u.email === email && u.password === sha512(password)
       });
       if(user){
         this.snapForm.reset();
-        this.router.navigateByUrl('/facesnaps');
-        this.notif.showSuccess("bienvenue","nous somme ravis de vous revoir");
+        this.router.navigateByUrl('/channel/chat');
+        this.notif.showSuccess("bienvenue dans la discubion","nous somme ravis de vous revoir");
 
 
       }else{

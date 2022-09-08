@@ -13,6 +13,7 @@ export class SignUpComponent implements OnInit {
   snapFormSign!: FormGroup;
   emailRegex!: RegExp;
   passwordRegex!: RegExp;
+  id!:any;
 
   constructor(private auth:AuthService,
               private router: Router,
@@ -45,7 +46,13 @@ export class SignUpComponent implements OnInit {
 
       this.auth.signUp(formData).subscribe(
         (res=>{
-          console.log(res)
+          console.log(res);
+          localStorage.setItem('user_id', res);
+          this.auth.userId = localStorage.getItem('user_id');
+          console.log(localStorage.getItem('user_id')); console.log('********** le local storage dans sincrire ts')
+          console.log(this.auth.userId);console.log('**********  dans sincrire ts')
+
+          //alert(this.auth.userId);
           if(res == 'emailExist'){
             this.notif.showError("oups","cet email existe veuillez vous connecter");
           }else{

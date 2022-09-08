@@ -8,10 +8,9 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 
-export class AuthService{
+export class FindService{
   private token!: string;
-  public userId!:any; //@todo number
-  public  id!:any;
+  // public  userId!: number; // @todo replace by userService
 
   constructor(private http: HttpClient) {
   }
@@ -29,7 +28,7 @@ export class AuthService{
    */
   signUp(formData:FormData):Observable<any>{
     return this.http.post<any>('http://localhost:9000/signUp',formData,{headers: {
-      'X_API_KEY':this.token
+        'X_API_KEY':this.token
       }})
   }
 

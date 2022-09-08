@@ -1,26 +1,55 @@
-# joker snapface api php
+# pabiosoft multi site version 0.1
+## _Rapport Full Stack developpeur Angular PHP
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.12.
+[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](http:pabiosoft.com)
 
-
-#observable
-## operateur bas niveau
-es opérateurs sont passés à la fonction  pipe()  des Observables ;
-L'opérateur  map()  permet de transformer les émissions d'un Observable ;
-L'opérateur  filter()  permet de filtrer les émissions d'un Observable ;
-L'opérateur  tap()  permet d'ajouter des effets secondaires à un Observable.
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](http://pabiosoft.com)
 
 
-map transform les emmision
-filter filtre les emmission : ordre 1
-tap sort de l'observable sans y touche (i.e: executer une autre fonction et continier dans l'observable)
+2022
+- ✨Evaluation ✨
+- 
+## MLD
 
 
+![plot](src/assets/mld.png)
+## Installation
 
-## Operateur Haut niveau
+```sh
+cd back
+php -S localhost:9000
+cd front 
+ng serve 
+
+```
+
+Projet pour une  presentation
+
+## Techno
+
+Une liste non exchaustive d
+
+| back | README |
+| ------ | ------ |
+| PHP | [backend] |
+| MVC | [en designe patherne] |
+| Doctrine | [3 des 6 tables]|
+| Fast Router  | [pour le routing] |
+
+| Front    |    README |
+| ------    | ------ |
+| ANGULAR | [le Frontend] |
+| approche Modulaire | [ pour les Core et Futures module] |
+|lazy loading | [ pour le routing] |
+| Pusher | [ comme websocket pour le chat] |
 
 
-### basique auth
+Want to contribute? Great!
 
-#3 jwt
-# uuid in bdd => api key 
+
+## License
+
+MIT
+
+**Free Software, Ismaila balde!**
+  

@@ -7,6 +7,7 @@ import {NewFaceSnapComponent} from "./face-snaps/components/new-face-snap/new-fa
 
 const routes: Routes = [
   { path: 'facesnaps', loadChildren: () => import('./face-snaps/face-snaps.module').then(m => m.FaceSnapsModule) },
+  {path: 'channel',loadChildren: () => import('./chat/chat.module').then(m=>m.ChatModule)},
   { path: '', component: LandingPageComponent }
 ];
 

@@ -5,6 +5,7 @@ import {FaceSnap} from "../../../core/models/face-snap.model";
 import {map, tap} from "rxjs/operators";
 import {FaceSnapsService} from "../../../core/services/face-snaps.service";
 import {Router} from "@angular/router";
+import {AuthService} from "../../../core/services/auth.service";
 
 @Component({
   selector: 'app-new-face-snap',
@@ -15,10 +16,12 @@ export class NewFaceSnapComponent implements OnInit {
   snapForm!: FormGroup;
   faceSnapProview$!:  Observable<FaceSnap>;
   urlRegex!:RegExp;
+  user_id!:any;
 
   constructor(private  formBuilder: FormBuilder,
               private faceSnapsService: FaceSnapsService,
-              private router:Router) { }
+              private router:Router,
+              private auth:AuthService) { }
 
   ngOnInit(): void {
     this.urlRegex = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&/=]*)/;
@@ -41,6 +44,9 @@ export class NewFaceSnapComponent implements OnInit {
         snaps:0
       }))
     );
+
+    console.log(this.auth.userId);console.log('********** dans new post')
+    this.user_id = localStorage.getItem('user_id');
   }
 
   // onSubmitForm():void{
@@ -71,7 +77,7 @@ export class NewFaceSnapComponent implements OnInit {
     formData.append('photo',photo)
     formData.append('location',location)
     formData.append('laDate',laDate)
-
+    formData.append('user_id',this.user_id)
     this.faceSnapsService.ajout(formData).subscribe(
       (res=>{
         console.log(res)

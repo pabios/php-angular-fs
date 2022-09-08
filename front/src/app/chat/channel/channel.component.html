@@ -1,0 +1,30 @@
+<div class="form-card">
+  <h4 class="snapped"> Discussion: integre le channel en envoyant un message</h4>
+
+  <div *ngIf="discussion" >
+    <div  *ngFor="let texto of discussion ">
+      {{texto.content}} par {{texto.email}} le {{texto.laDate}}
+    </div>
+  </div>
+
+<!--  <div  #oldMessage *ngFor="let message of messages$ | async" >-->
+<!--    <p>-->
+<!--      {{message.content}} le {{message.laDate}} par toto-->
+<!--    </p>-->
+<!--  </div>-->
+
+</div>
+
+<form  [formGroup]="snapForm">
+  <div class="form-card">
+    <h2>Message</h2>
+    <div class="form-group">
+      <label for="texto">Message</label>
+      <textarea #content id="texto" cols="30" rows="10"></textarea>
+    </div>
+    <div class="action-buttons">
+      <button type="submit" #signIn (click)="onSend(content.value)">send</button>
+    </div>
+  </div>
+</form>
+

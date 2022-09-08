@@ -6,6 +6,8 @@ import {ToastrService} from "ngx-toastr";
 import {NotificationService} from "../../../core/services/notification.service";
 import Pusher from "pusher-js";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
+import {AuthService} from "../../../core/services/auth.service";
 
 @Component({
   selector: 'app-face-snap-list',
@@ -25,7 +27,9 @@ export class FaceSnapListComponent implements OnInit {
 
   constructor(private faceSnapsService: FaceSnapsService,
               private notif:NotificationService,
-              private  formBuilder: FormBuilder) {
+              private  formBuilder: FormBuilder,
+              private router:Router,
+              private auth:AuthService) {
 
   }
 
@@ -48,8 +52,12 @@ export class FaceSnapListComponent implements OnInit {
       this.info = data;
     });
 
+    console.log(this.auth.userId);console.log('********** dasn list posts')
   }
 
+  goChat():void{
+    this.router.navigateByUrl('/channel/chat').then(r => '');
+  }
 
 
 
