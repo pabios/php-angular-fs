@@ -1,0 +1,33 @@
+<?php $title = 'Mon blog'; ?>
+
+<?php ob_start(); ?>
+    <h1>REQUETE SQL </h1>
+<?php require('menuJoker.phtml'); ?>
+
+    <div class="dd">
+        <p>Jointure :les posts d'un user </p>
+        <pre>
+
+        SELECT * FROM follow.post as p inner join user as u on p.user_id = u.id where u.id = 1
+    </div>
+
+
+    <div class="dd">
+    <pre>
+            <?php
+            foreach ($jointures as $jointure){
+                echo '<pre/>  : '.$jointure['id'].' : '. $jointure['title'].' | '. $jointure['email'];echo '<br/>';
+            }
+            ?>
+
+    </pre>
+    </div>
+
+
+
+<?php
+//$users->closeCursor();
+?>
+<?php $content = ob_get_clean(); ?>
+
+<?php require('view/frontend/template.php'); ?>

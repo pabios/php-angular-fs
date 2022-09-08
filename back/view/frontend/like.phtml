@@ -1,0 +1,23 @@
+<?php $title = 'Mon blog'; ?>
+
+<?php ob_start(); ?>
+    <div>
+        <h1>Like</h1>
+        <ul>
+            <li>Like</li>
+            <li><a href="update">Posts</a> </li>
+        </ul>
+        <form method="post" action="like">
+            <input type="text" name="like" placeholder="like" />
+            <input type="number" name="lId" placeholder="id" />
+            <input type="submit" name="update" value="save">
+        </form>
+    </div>
+
+
+<?php
+//$users->closeCursor();
+?>
+<?php $content = ob_get_clean(); ?>
+
+<?php require('template.php'); ?>

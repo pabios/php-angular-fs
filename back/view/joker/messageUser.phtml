@@ -1,0 +1,33 @@
+<?php $title = 'Mon blog'; ?>
+
+<?php ob_start(); ?>
+    <h1>REQUETE SQL </h1>
+<?php require('menuJoker.phtml'); ?>
+
+    <div class="dd">
+        <p>Jointure : Recupere tout les style d'un site </p>
+        <pre>
+
+SELECT si.id,sty.titre,sty.paragraphe FROM follow.site_has_style as ss inner join site as si inner join style as sty on ss.site_id = si.id      </pre>
+    </div>
+
+
+    <div class="dd">
+    <pre>
+            <?php
+            foreach ($jointures as $jointure){
+                echo '<pre/> site : '.$jointure['id'].' : '. $jointure['content'].' | '. $jointure['laDate'];echo '<br/>';
+            }
+            ?>
+
+    </pre>
+    </div>
+
+
+
+<?php
+//$users->closeCursor();
+?>
+<?php $content = ob_get_clean(); ?>
+
+<?php require('view/frontend/template.php'); ?>

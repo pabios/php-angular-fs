@@ -1,0 +1,45 @@
+
+<!-- ok new -->
+
+<!-- debut deux -->
+<section class="sec2" id="hebergement">
+  <button > click me  {{info}} </button>
+  <div class="main-sec2">
+    <h2>Evènement à vénir</h2>
+    <div class="les_box ">
+      <app-face-snap *ngFor="let faceSnap of faceSnaps$ | async" [faceSnap]="faceSnap"></app-face-snap>
+
+    </div>
+    <p class="afficherPlus"><a href="#">Afficher plus</a> </p>
+  </div>
+
+
+  <!-- une route api pour les 3 plus populare -->
+  <div class="sidebar">
+    <div class="titre_sidebar">
+      <h2>Les 3 derniers </h2>
+      <p><i class="fas fa-chart-line"></i></p>
+    </div>
+    <div class="liste " *ngFor="let trois of troisLast$ | async">
+      <a href="#"  class="carte">
+        <div class="box_sidebar box_appear">
+          <div class="image_box_sidebar">
+            <img src="{{trois.imageUrl}}" alt="" class="src">
+          </div>
+          <div class="info_box_sidebar">
+            <span class="titre_h4">{{trois.title}}</span>
+            <span class="sidebar-info__item2 "> {{trois.location}}</span>
+            <span class="sidebar-info__item3">
+                                <i class="fas fa-star bleu"></i>
+                                <i class="fas fa-star bleu"></i>
+                                <i class="fas fa-star bleu"></i>
+                                <i class="fas fa-star bleu"></i>
+                                <i class="fas fa-star bleu"></i>
+            </span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>

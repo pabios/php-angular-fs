@@ -1,0 +1,34 @@
+<?php $title = 'Mon blog'; ?>
+
+<?php ob_start(); ?>
+    <h1>REQUETE SQL </h1>
+<?php require('menuJoker.phtml'); ?>
+
+    <div class="dd">
+        <p>Liste de tous les Styles</p>
+        <pre>
+
+         SELECT id, titre, paragraphe,lien   FROM style
+     </pre>
+    </div>
+
+
+    <div class="dd">
+    <pre>
+            <?php
+            foreach ($styles as $style){
+                echo '<pre/>'.$style['id'].' '. $style['titre'].' | '. $style['paragraphe'];echo '<br/>';
+            }
+            ?>
+
+    </pre>
+    </div>
+
+
+
+<?php
+//$users->closeCursor();
+?>
+<?php $content = ob_get_clean(); ?>
+
+<?php require('view/frontend/template.php'); ?>

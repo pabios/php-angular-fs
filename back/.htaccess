@@ -1,0 +1,5 @@
+RewriteEngine On # Activer le module Rewrite
+RewriteBase ~/Documents/formation/conding_perso/php/cadre-mvc
+RewriteRule ^api/sends/?$ index.php?action=sends [NC,L]
+RewriteRule ^api/posts$ index.php?action=postsApi
+#RewriteRule ^[^/]+/(\d+)$ produits.php?id=$1

@@ -1,0 +1,21 @@
+<?php $title = 'Mon blog'; ?>
+
+<?php ob_start(); ?>
+    <div>
+        <h1>Connexion</h1>
+        <form method="post" action="login">
+            <input type="email" name="email" placeholder="email"/>
+            <input type="text" name="mdp" placeholder="mot de pass"  />
+
+            <input type="submit" name="signIn" value="inscription">
+        </form>
+    </div>
+
+
+
+<?php
+//$users->closeCursor();
+?>
+<?php $content = ob_get_clean(); ?>
+
+<?php require('view/frontend/template.php'); ?>
