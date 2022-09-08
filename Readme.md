@@ -14,8 +14,9 @@
 
 ![plot](front/src/assets/mld.png)
 ## Installation
-
+> import database sql from /back/sites/bdd.sql
 ```sh
+git clone https://github.com/pabios/php-angular-fs.git
 cd back
 php -S localhost:9000
 cd front 
