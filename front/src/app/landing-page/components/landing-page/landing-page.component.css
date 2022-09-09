@@ -4,11 +4,11 @@
   margin: 20px auto;
   padding: 10px 30px;
   box-shadow: lightgray 4px 4px 20px;
-  .para{
-    font-size: 14px;
-    line-height: 2em;
-    word-spacing: 0.5em;
-  }
+}
+.container .para {
+  font-size: 14px;
+  line-height: 2em;
+  word-spacing: 0.5em;
 }
 
 .landing-links {
@@ -20,5 +20,4 @@ button {
   font-size: 20px;
 }
 
-
-
+/*# sourceMappingURL=landing-page.component.css.map */

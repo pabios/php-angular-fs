@@ -18,13 +18,11 @@ export class chatService {
 
 
   getAllMessage(): Observable<any> {
-    // return this.http.get<FaceSnap[]>('http://localhost:3000/facesnaps'); // api externe
     // return this.http.get<FaceSnap[]>('http://localhost:9000/index.php?action=postsApi')
     return this.http.get<FaceSnap[]>('http://localhost:9000/messages')
   }
 
   getPusherMessage(): Observable<any> {
-    // return this.http.get<FaceSnap[]>('http://localhost:3000/facesnaps'); // api externe
     // return this.http.get<FaceSnap[]>('http://localhost:9000/index.php?action=postsApi')
     return this.http.get<FaceSnap[]>('http://localhost:9000/pusherMessage')
   }

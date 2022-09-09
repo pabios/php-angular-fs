@@ -36,11 +36,11 @@ class Site
     /**
      * @ORM\Column(type="string")
      */
+    private ?string $misAjour = null;
 
     /**
      * @ORM\Column(type="string")
      */
-    private ?string $update = null;
 
     private ?string $proprietaire = null;
 
@@ -97,14 +97,14 @@ class Site
         return $this;
     }
 
-    public function getUpdate(): ?string
+    public function getMisAjour(): ?string
     {
-        return $this->update;
+        return $this->misAjour;
     }
 
-    public function setUpdate(?string $update): self
+    public function setMisAjour(?string $misAjour): self
     {
-        $this->update = $update;
+        $this->misAjour = $misAjour;
 
         return $this;
     }

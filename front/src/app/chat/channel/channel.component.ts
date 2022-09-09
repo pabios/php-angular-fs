@@ -38,8 +38,6 @@ export class ChannelComponent implements OnInit {
 
     this.channel = pusher.subscribe('pabiosoft');
     this.channel.bind('my-event',  (data:string) => {
-       //alert(JSON.stringify(data));
-      //alert(data);
       //console.log(data);
       this.info = data;
 
@@ -50,7 +48,6 @@ export class ChannelComponent implements OnInit {
       console.log(this.pusherMessage[0][0].content);
 
       this.discussion = this.pusherMessage[0];
-      //alert(pusherMessage[0].content)
 
     });
 
@@ -66,8 +63,6 @@ export class ChannelComponent implements OnInit {
 
     this.channel = pusher.subscribe('pabiosoft');
     this.channel.bind('my-event',  (data:string) => {
-      // alert(JSON.stringify(data));
-      //alert(data);
       //console.log(data);
       this.info = data;
     });

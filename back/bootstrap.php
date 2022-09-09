@@ -21,7 +21,7 @@ $conn = array(
     'host' => 'localhost',
     'user' => 'root',
     'password' => 'pass',
-    'dbname' => 'folo'
+    'dbname' => 'follow'
 );
 
 // obtaining the entity manager

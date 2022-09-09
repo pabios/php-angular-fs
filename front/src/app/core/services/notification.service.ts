@@ -22,8 +22,6 @@ export class NotificationService {
 
     this.channel = pusher.subscribe('pabiosoft');
     this.channel.bind('my-event',  (data:string) => {
-      // alert(JSON.stringify(data));
-      //alert(data);
       //console.log(data);
       this.info = data;
     });
@@ -32,7 +30,7 @@ export class NotificationService {
 
   voirNotifPusher(){
     this.channel.bind('pusher:subscription_succeeded', function(data:any) {
-      alert(JSON.stringify(data));
+      //alert(JSON.stringify(data));
     });
   }
 
