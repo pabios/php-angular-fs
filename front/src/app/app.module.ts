@@ -18,6 +18,7 @@ import {LandingPageModule} from "./landing-page/landing-page.module";
 import {AuthModule} from "./auth/auth.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
+import {FroalaEditorModule, FroalaViewModule} from "angular-froala-wysiwyg";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,9 @@ import {ToastrModule} from "ngx-toastr";
     LandingPageModule,
     AuthModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot()
   ],
   providers: [
   ],

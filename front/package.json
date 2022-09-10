@@ -18,6 +18,7 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "angular-froala-wysiwyg": "^4.0.14",
     "js-sha512": "^0.8.0",
     "ngx-toastr": "^14.3.0",
     "pusher-angular": "^1.0.0",

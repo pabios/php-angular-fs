@@ -7,6 +7,7 @@ import {tap} from "rxjs/operators";
 import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 import {NotificationService} from "../../../core/services/notification.service";
 import Pusher from "pusher-js";
+import {FroalaEditorModule} from "angular-froala-wysiwyg";
 
 @Component({
   selector: 'app-single-face-snap',
@@ -20,7 +21,6 @@ export class SingleFaceSnapComponent implements OnInit {
 
   buttonText!: string;
   entierRegex!: RegExp;
-
   channel!:any;
   info!: string;
   lesLikes$!: Observable<any>;

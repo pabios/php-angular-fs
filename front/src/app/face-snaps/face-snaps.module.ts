@@ -7,6 +7,7 @@ import {SingleFaceSnapComponent} from "./components/single-face-snap/single-face
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {FaceSnpasRoutingModule} from "./face-snpas-routing.module";
+import {FroalaEditorModule} from "angular-froala-wysiwyg";
 
 
 
@@ -17,12 +18,13 @@ import {FaceSnpasRoutingModule} from "./face-snpas-routing.module";
     NewFaceSnapComponent,
     SingleFaceSnapComponent
   ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    FaceSnpasRoutingModule,
-    FormsModule
-  ],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        FaceSnpasRoutingModule,
+        FormsModule,
+        FroalaEditorModule
+    ],
   exports:[
     FaceSnapComponent,
     FaceSnapListComponent,

@@ -1,5 +1,5 @@
 <div class="face-snap-card"   *ngIf="faceSnap$ | async as faceSnap" [ngClass]="{ snapped: buttonText === 'deja aimer!' }">
-  <h2>{{ faceSnap.title | uppercase }}</h2>
+  <h2 class="titre">{{ faceSnap.title | uppercase }}</h2>
   <a routerLink="/facesnaps">Back</a>
   <p>Mis en ligne {{ faceSnap.createdDate | date: 'à HH:mm, le d MMMM yyyy' }}</p>
   <img [src]="faceSnap.imageUrl" [alt]="faceSnap.title">
@@ -23,3 +23,4 @@
   <p *ngIf="faceSnap.location">Cet evenèment ce déroule  à {{ faceSnap.location }}</p>
 
 </div>
+
