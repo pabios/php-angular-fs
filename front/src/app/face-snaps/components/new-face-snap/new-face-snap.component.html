@@ -7,7 +7,7 @@
     </div>
     <div class="form-group">
       <label for="description">Description</label>
-      <textarea id="description" #description type="text" formControlName="description" rows="4">
+      <textarea   id="description" #description type="text" formControlName="description" rows="4">
         </textarea>
     </div>
     <div class="form-group">
@@ -28,6 +28,7 @@
     </div>
   </form>
 </div>
+<div id="edit" [froalaEditor]>Hello, Froala!</div>
 
 <div class="face-snap-card" *ngIf="faceSnapProview$ | async as faceSnap">
   <h2>{{ faceSnap.title | uppercase }}</h2>
