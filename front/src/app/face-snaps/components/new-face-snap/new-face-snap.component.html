@@ -1,34 +1,35 @@
 <div class="form-card">
-  <h2>Nouveau Post</h2>
+  <h2> Envie de partager ?</h2>
   <form [formGroup]="snapForm">
     <div class="form-group">
-      <label for="title">Titre</label>
+      <label for="title">Donne un titre a un article</label>
       <input id="title" #title type="text" formControlName="title">
     </div>
     <div class="form-group">
-      <label for="description">Description</label>
+      <label for="description">Donne un avant gout de ton article</label>
       <textarea   id="description" #description type="text" formControlName="description" rows="4">
         </textarea>
     </div>
     <div class="form-group">
-      <label for="imageUrl">URL de l'image</label>
+      <label for="imageUrl">URL de l'image de ta techno</label>
       <input id="imageUrl" #photo type="text" formControlName="imageUrl">
     </div>
     <div class="form-group">
-      <label for="laDate">Date de l'evenement</label>
+      <label for="laDate">Date de publication prévus</label>
       <input  id="laDate" #laDate type="datetime-local" formControlName="laDate">
     </div>
     <div class="form-group">
-      <label for="location">Lieu</label>
+      <label for="location">Le nom de la techno </label>
       <input id="location" #location type="text" formControlName="location">
     </div>
+    <span style="font-size: 14px" >🙏 Une fois enregistrer je vous contact le weekend prochain via ton email d'inscrption.</span>
     <div class="action-buttons">
       <button type="submit"  (click)="onSend(title.value,description.value,photo.value,laDate.value,location.value)"
               [disabled]="snapForm.invalid">Enregistrer</button>
     </div>
   </form>
 </div>
-<div id="edit" [froalaEditor]>Hello, Froala!</div>
+<!--<div id="edit" [froalaEditor]>Hello, Froala!</div>-->
 
 <div class="face-snap-card" *ngIf="faceSnapProview$ | async as faceSnap">
   <h2>{{ faceSnap.title | uppercase }}</h2>

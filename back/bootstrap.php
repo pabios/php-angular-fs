@@ -14,14 +14,13 @@ $config = ORMSetup::createAnnotationMetadataConfiguration(array(__DIR__ . "/src/
 // or if you prefer YAML or XML
 // $config = ORMSetup::createXMLMetadataConfiguration(array(__DIR__."/config/xml"), $isDevMode);
 // $config = ORMSetup::createYAMLMetadataConfiguration(array(__DIR__."/config/yaml"), $isDevMode);
-
 // database configuration parameters
 $conn = array(
     'driver' => 'pdo_mysql',
     'host' => 'localhost',
     'user' => 'root',
     'password' => 'pass',
-    'dbname' => 'follow'
+    'dbname' => 'follow '
 );
 
 // obtaining the entity manager

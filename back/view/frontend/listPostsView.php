@@ -76,7 +76,7 @@
 
 
 <!-- decommente pour un affichage php -->
-
+<!---->
 <!-- <div>-->
 <!--     <table border="1">-->
 <!--         <tr>-->

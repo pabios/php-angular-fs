@@ -17,8 +17,12 @@
 }
 
 .snapped {
-  background-color: rgba(lightgreen, 0.4);
-  color: darkgreen;
+  //background-color: rgba(lightgreen, 0.4);
+
+  background-color: rgba(black, 0.4);
+  //color: darkgreen;
+  color: white;
+  font-weight: bold;
   button {
     box-shadow: lightgreen 3px 3px 7px;
     color: darkgreen;

@@ -1,0 +1,13 @@
+.app-ace-editor {
+  width: 80%;
+  min-height: 300px;
+  border: 1px solid gray;
+  &__400{
+    min-height: 400px;
+  }
+}
+
+
+.app-ace-editor__200 {
+  height: 200px;
+}

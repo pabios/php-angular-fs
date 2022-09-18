@@ -56,7 +56,7 @@ export class SignUpComponent implements OnInit {
           if(res == 'emailExist'){
             this.notif.showError("oups","cet email existe veuillez vous connecter");
           }else{
-            this.notif.showSuccess("bienvenue","votre inscription est terminer");
+            this.notif.showSuccess("tu peux maintenant publier en te connectant","votre inscription est terminer");
             this.router.navigateByUrl('/facesnaps');
           }
         })

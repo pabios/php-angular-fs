@@ -4,31 +4,268 @@
   <p>Mis en ligne {{ faceSnap.createdDate | date: 'à HH:mm, le d MMMM yyyy' }}</p>
   <img [src]="faceSnap.imageUrl" [alt]="faceSnap.title">
   <p>{{faceSnap.title}}</p>
+  <p>  {{ faceSnap.description }}
+  </p>
 
-<!--@todo a changer par insert in bd-->
+<!--@todo a changer par insertion texte article en  bdd-->
 <!--  debut description du cours-->
+
   <div class="cours cours1" *ngIf="faceSnap.id == 4">
-    <h2>Creer une API </h2>
-    <!-- Terminal -->
-    <div class="terminal" >
-       <pre> {{ faceSnap.description }}</pre>
+    <h2>Le Web 2.0 ✈ ✈  </h2>
+    <div class="prerequis" >
+      <h2>Prerequis</h2>
+      <ul>
+       <ol> - Avoir une fois  creer un  script php </ol>
+      </ul>
     </div>
-  </div>
+    <h3>Contexte:</h3>
+    <p> Alors pourquoi parlez du web 2.0? 💆</p>
+    <p>
+      comme tu a une fois reussi a soumettre un formulaire en php tu sais qu'a  chaque submit du formulaire
+      ta page se reactualise.
+    </p>
+    <p>
+      Et lorsque tu like une video sur youtube oubien que tu y  poste un  commentaire cela ne
+      remmet pas la video a zero donc la page se reactualise pas meme si les donnees on ete bien envoyer.
+      Le web 2.0 est generalement concus via des framework des Framework Js recent comme Angular ou React pour ne citer que ceux la.
+    </p>
 
-  <div class="cours cours2" *ngIf="faceSnap.id == 4">
-    <!-- Terminal -->
+    <h3>Api Rest </h3>
+    <p>Essayons de faire plus simple ⛹ !</p>
+    <p>
+      le mot Api de par son cigle  designe tout simplement une Interface d'Application Programmable .
+      En resumer c'est un outils qui permet une communication facile entre le front ( Angular, Vue .. ) et le back (php, node) .
+      Par exemple :
+    </p>
+
+   <p>-le front demande a afficher une liste des clients et le back lui offre ceci ( https://domain.com/custemers )</p>
+    <p>- le front demande les information de  l'utilisateur 4 alors le back repond ceci ( https://domaine.com/user/4 )</p>
+      <p> - le front veut sauvegarder les commandes dans une base de donnees alors le back lui offre ceci (https://domaine.com/orders )</p>
+    <p> je crois qu'on a compris 🦳</p>
+    <p> Question ? et si on veut supprimer cet utilisateur  4 ? </p>
+    <p>  le back  aussi peut lui offrir  ceci  https://domaine.com/user/4 </p>
+    <p>  Me diriez vous que la recuperation (https://domaine.com/user/4)  et la suppression  (https://domaine.com/user/4) sont identique.</p>
+    <p> je suis d'accord mais c'est  là où va intervenir notre developpeur back pour nous expliquer pourquoi il a choisi une
+    method REST pour la conception de cette API sans nous fournir la documentation de suis-la.</p>
+    <p> Vous avez donc compris qu'une API REST necessite donc  une vrai documentation.</p>
+
+    <h3>Requete - Reponse</h3>
+    <p>
+      Si on parle ici du web 2.0 c'est qu'on a deja compris les b.a-ba classique du fonctionnement du web.
+      on va s'attarder un peu sur ces requetes http emisent par le client (navigateur ).
+    </p>
+    <p>
+      - Si on est natif de php on sais deja comment emmetre des requettes GET et POST pour recuperer ou envoyer des donnees au serveur.
+      on y est deja habituer que ce bout de code nous devient toute logique.
+    </p>
+
+
+
+
+    <app-editor  [(text)]="getPostPhp" [readOnly]="true" mode="html"  style="{{taille_200}}" class="app-ace-editor__400"  >  </app-editor>
+
+    <p> il sont si connus car jusque la le HTML classique ne sais faire que ca .</p>
     <div class="terminal" >
-      <pre> {{ faceSnap.description }}</pre>
+      <pre>  form  method="get" action="posts"    </pre>
+      <pre>  form method="post" action="edit"   </pre>
     </div>
-  </div>
+    <p> Mais saviez vous qu'on peut egalement emmetre des requette PUT ou DELETE </p>
+    <app-editor  [(text)]="putAngular" mode="html"  class="app-ace-editor__400"  >  </app-editor>
+    <p> oui mais biensure faudrais recuperer les donnee cote back d'une autre maniere</p>
+    <app-editor  [(text)]="putReqPhp" [readOnly]="true" mode="html"  class="app-ace-editor__400"  >  </app-editor>
+    <h3> Vif du sujet</h3>
+    <p>
+      Allez assez parler commencons a concevoir une api qui recupere une liste de posts.
+
+    </p>
+    <p>
+      On va utiliser un design pathern toute simple
+    </p>
+    <div>
+      on commence par creer un dossier vide qu'on va appeler back et suivre cette arborescence
+      <p>un dossier back puis un dossier src et un fichier index.php a la racine . Et dans le dossier src on cree 3 dossiers (Controller - Entity -Repository )</p>
+      <p><b> <u>back</u></b> </p>
+      <p>===> <b>src</b></p>
+      <p>========>Controller </p>
+      <p>========>Entity</p>
+      <p>========>Repository</p>
+      <p><b>===>index.php</b>  </p>
+
+    </div>
+    <div>
+      <p> Allez le pricipe est simple ! le point d'entrer est notre index.php qui va etre notre routeur principale </p>
+      <p>Si un utilisateur demande une route specifique , alors le routeur interoge le Controller specifier; et ce Controller fais appel au Repository qui va faire le
+        traitement sur les donnee en utilisant l'Entity .👴. ( tkt ca va venir ).
+      </p>
+      <h3> les Models </h3>
+      <p>
+        Parlez de backend necessite forcement d'une connection a une base de donnee
+      </p>
+      <p>ici on va utiliser Mysql et y creer une base de donnee appeler  <u>labe</u> et une  table nommee <u>post</u></p>
+      <h4>Entity Manager.php</h4>
+      <p>
+        Dans le dossier Entity on creer un fichier qu'on va appeler Manager.php et y coller se code classique pour ce connecter a une bdd avec Pdo
+
+      </p>
+      <app-editor  [(text)]="managerPhp" [readOnly]="true" mode="html"   class="app-ace-editor__400"  >  </app-editor>
+      <h4>Entity Post.php</h4>
+      <p>
+        On va creer dans ce meme dossier ( entity) un fichier Post.php qui va  etre une abstraction de notre table post avec les meme caracteristique
+      </p>
+      <app-editor  [(text)]="postPhp" mode="html"   class="app-ace-editor__400"  >  </app-editor>
+      <span> 🟨 <i>si vous ne pouvez pas typer vos variable retirer les differents type ou passer à php8</i> </span>
+
+      <h4>le Repository PostRepository.php</h4>
+      <p>
+        Dans le dossier Repository creer un fichier nommer PostRepository qui va contenir toute nos different requetes lier a la table post.
+      </p>
+      <p> Et y ajouter deux methods ( une pour recuperer les posts et une pour inserer des posts</p>
+      <app-editor  [(text)]="postRepository" mode="html"   class="app-ace-editor__400"  >  </app-editor>
+
+      <h3>les Controlleurs </h3>
+      <p>Le controller c'est un peu comme la boite a vitesse  d'une voiture qui attende les missions du choffeur puis commissionne un comportement au moteur.</p>
+      <p>Dans notre cas le moteur va etre l'entity Post et  le choffeur va etre le fameu index.php qu'on verra tout a l'heure </p>
+
+      <h4> le Controller PostController.php</h4>
+      <p>
+        Dans le dossier Controller on cree un fichier nommer PostController.php
+      </p>
+      <app-editor  [(text)]="postController" mode="html"   class="app-ace-editor__400"  >  </app-editor>
+
+      <h3> le Routeur index.php </h3>
+      <p>
+        On sait deja que l'index.php c'est le point d'entrer de notre api; donc c'est la où tout va se passer
+      </p>
+      <p> Alors mieux vaut de partir sur de bonne base solide car un routeur mal fait implique disons 99,99% de  failles de securité </p>
+      <p>La chose la plus simple serai de concevoir ce routeur en utilisant les action demander par l'utilisateur afin d'interoger le bon controlleur comme ceci </p>
+        <div class="terminal" >
+          <pre>  if($_GET['action'] == 'posts') : posts() ? echo '404 par exemple '; </pre>
+          <pre> // avec posts() la methode post de PostController.php </pre>
+        </div>
+      <span> 🟨 <i>pour le tester n'oublier pas d'importer le controller  </i> </span>
+
+      <p> Dans ce cas de figure si l'utilisateur essayait d'y acceder a ceci </p>
+      <div class="terminal" >
+        <pre> http://localhost:8000/?action=posts</pre>
+      </div>
+      <p> cela allais bien marcher car cette action appele la methode posts() du controlleur PostController qui a son
+      tour recupere les bon donnees du Model ( Post et PostRepository )</p>
+      <p>
+        Mais bon nous on aimerais que notre API ait des beau url  sans utiliser de fichier .htacces ( que je vous deconceille d'ailleur )
+      </p>
+      <p>
+        Alors notre but c'est d'avoir ceci
+      </p>
+      <div class="terminal" >
+        <pre> http://localhost:8000/posts</pre>
+      </div>
+      <p> Qui nous retourne du Json ( l'objet qu'on a creer dans la methode posts du  controller PostController  )</p>
+      <p> Et pour ce faire on va utiliser un bundle tres populaire appeler Fast Routeur </p>
+      <p> 🪔 Qui parle d'utiliser un bundle implique <b>Composer </b> </p>
+      <p> Si tu ne l'a jamais utiliser c'est le moments car il est s'y simple    </p>
+      <p> commence par installer composer dans ta machine puis ouvre un terminal dans ton projet </p>
+      <div class="terminal">
+        <pre>composer require nikic/fast-route</pre>
+      </div>
+      <p>Cela va creer deux fichier a la racine  composer.json et composer.lock + un dossier vendor ( qu'on ne touchera pas )</p>
+      <p>Dans le fichier composer.json ajouter de la ligne 5 a la ligne 9 pour la gestion de nos Namespace</p>
+      <app-editor  [(text)]="composerJson" [readOnly]="true" mode="json"   class="app-ace-editor__400"    >  </app-editor>
+       <h3> les namespaces </h3>
+      <p> c'est juste un espase de nom autrement dit quand vous observer bien vos differents class recement creer </p>
+      <p> Il possedait toutes un namespace en haut du fichier </p>
+      <p>Pour l'entity post on avais ceci </p>
+      <div class="terminal">
+        <pre>namespace Pabiosoft\Entity;</pre>
+      </div>
+      <p> Pour le controller PostController on avais ceci </p>
+      <div class="terminal">
+        <pre>namespace Pabiosoft\Controller; </pre>
+
+      </div>
+      <p>Pour le Repository on avait ceci</p>
+      <div class="terminal">
+        <pre>namespace Pabiosoft\Repository;</pre>
+      </div>
+      <p>Ce qu'on fais c'est qu'a chaque fois qu'on creer une class on la met a l'interieur d'un sac </p>
+      <p>Donc si  un jour on veut acceder a cette class on ouvre juste le bon sac a chaque fois par exemple dans le Controller on a  </p>
+      <div class="terminal">
+        <pre>use \Pabiosoft\Entity\Post;</pre>
+        <pre>use \Pabiosoft\Repository\PostRepository;</pre>
+      </div>
+      <p>Et dans notre composer.json tout a l'heur à la ligne 7 grosso modo on specifie a l'autolodeur de composer quelle est notre namespace de base et ou le trouver </p>
+      <p> il s'appele Pabiosoft et il se trouve dans le dossier src</p>
+      <span><i> 👽 Allez on fera un autre article pour demistifier composer, mais pour notre api on a eu ce qu'on voulait  </i></span>
+
+      <h3>On est enfin pret pour construire ce fameux routeur  (index.php) </h3>
+      <p> Vous pouvez faire un tour sur le depot de nikic pour comprendre de plus en details son bundle <a href="https://github.com/nikic/FastRoute"> github/nikic/fasRoute</a></p>
+      <p>
+        Je vous offre ce code on va l'explication plus bas ( 🏇 prend 3 minutes pour essayer  de le comprendre cela aide beaucoup )
+
+        <app-editor  [(text)]="fastRooter" [readOnly]="true" mode="html"   class="app-ace-editor__400"  >  </app-editor>
+      </p>
 
 
-  <div class="cours cours3" *ngIf="faceSnap.id == 4">
-    <!-- Terminal -->
-    <div class="terminal" >
-      <pre> {{ faceSnap.description }}</pre>
-    </div>
-  </div>
+      <p>
+        Alors le principale c'est la methode simpleDispather qui prend en callback les differentes
+        route de notre API .
+      </p>
+      <app-editor  [(text)]="dispathFastRoute" [readOnly]="true" mode="html"   class="app-ace-editor__400"  >  </app-editor>
+
+      <p>
+        Ici on a une seul route nommer posts accessible en GET et qui appelle la methode posts() du PostController
+      </p>
+      <p> Facile non </p>
+      <p>
+        Donc si tu veux ajouter une route en Post par exemple pour inserer des data avec notre methode ajout() du PostController
+      </p>
+      <p>Faudra juste ajoute une nouvelle route comme ceci </p>
+      <div class="terminal" >
+        <pre>
+          $r->addRoute(
+          ['GET', 'POST'],
+          '/add',
+          '\Pabiosoft\Controller\PostController::ajout'
+          );
+        </pre>
+      </div>
+      <p> Avec ce routeur pour indiquer qu'une action est en Post faudra lui donnee un tableau ['GET','POST']</p>
+      <p>Donc ici on a ajouter une route http://localhost:8000/add qui va envoyer des donnee au serveur en appelant notre methode ajout du PostController </p>
+      <p>
+        Je te donne un Bonus qu'on ne couvre pas ici
+      </p>
+      <p>Supposons que tu veut avoir une route comme http://localhost:8000/post/2 qui qui recupere le post qui a comme id 2 </p>
+      <p>Tu aura a y ajouter une route</p>
+      <app-editor  [(text)]="routeUnPost" [readOnly]="true" mode="html"   class="app-ace-editor__400"  >  </app-editor>
+      <p>Bien evidement faudra creer la methode post() dans PostController qui return le post qui a comme id 2 . (🏇 je te fais confiance ) </p>
+
+
+      <h3>Gestion des erreurs </h3>
+
+
+      <p> Comme tu a bien lu le routeur actuel tu a remarqué que j'appelle deux methodes    </p>
+      <p> A la ligne 44 une erro404 qui se trouve dans un HomeController</p>
+      <p> A la ligne 53 une erro405 qui se trouve egalement dans le HomeController</p>
+      <p>Oui c'est ca </p>
+      <p>Va creer un Fichier appeler HomeController dans le dossier Controller (n'oublie pas de le metre dans le bon  sac  => namespace Pabiosoft/Controller )</p>
+      <p>
+        A l'interieur cree les deux methode. Et echo 'pages not found' dans la methode error404()
+ et echo 'page not allowed dans la methode error405()
+      </p>
+      <app-editor  [(text)]="homeController"  [readOnly]="true" mode="html"   class="app-ace-editor__400"  >  </app-editor>
+
+
+      <div class="fin">
+          <p> Alors maintenant on va tester tous ca </p>
+        <p> Commence par inserer des donnees dans ta base de donné </p>
+        <p>Puis dans le navigateur tappe http://localhost:8000/post </p>
+        <p> 👋 bingo si tu vois un beau tableau d'objet  Json, prend une pause  café    </p>
+        <app-editor  [(text)]="resultApiPost" [readOnly]="true" mode="json"   class="app-ace-editor__400"  >  </app-editor>
+
+        <p>🤦 Si non c'est pas grave lit l'erreur que tu a pendant 3 minutes puis relis ton code  </p>
+        <p> 🤦 Si  apres apres 10 minutes tu y arrive prend une pause et reviens plus tard tete reposer  </p>
+
+
+      </div>
 
 
   <div class="cours" *ngIf="faceSnap.id != 4 && faceSnap.id !=9">
@@ -73,7 +310,36 @@
     </span>
     </div>
   </form>
-  <p *ngIf="faceSnap.location">Cet evenèment ce déroule  à {{ faceSnap.location }}</p>
+  <p *ngIf="faceSnap.location">Domaine de l'article: {{ faceSnap.location }}</p>
 
 </div>
 
+
+
+
+
+<!--model editor-->
+
+<!--  editor ici  [readOnly]="true"-->
+<!--<app-editor  [(text)]="htmlInputData" mode="html"  >  </app-editor>-->
+
+<!--<div style="width: 100%;max-width: 1200px;margin: 0 auto;">-->
+<!--  <div style="display: grid;grid-template-columns: repeat(2, minmax(0, 1fr));gap: 16px;">-->
+<!--    <div>-->
+<!--      <h2>JSON Editor</h2>-->
+<!--      <app-editor [(text)]="jsonInputData" mode="json" ></app-editor>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--      <h2>YAML Editor</h2>-->
+<!--      <app-editor [(text)]="yamlInputData" mode="yaml"></app-editor>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--      <h2>App Module TypeScript Editor <span style="color: blue;">ReadOnly</span></h2>-->
+<!--      <app-editor [(text)]="appModuleTsData" mode="typescript" [readOnly]="true"></app-editor>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--      <h2>Scss Editor</h2>-->
+<!--      <app-editor [(text)]="scssData" mode="scss"></app-editor>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

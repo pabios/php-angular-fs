@@ -38,7 +38,8 @@ export class LoginComponent implements OnInit {
       });
       if(user){
         this.snapForm.reset();
-        this.router.navigateByUrl('/channel/chat');
+        // this.router.navigateByUrl('/channel/chat');
+        this.router.navigateByUrl('/facesnaps/create');
         this.notif.showSuccess("bienvenue dans la discubion","nous somme ravis de vous revoir");
 
 

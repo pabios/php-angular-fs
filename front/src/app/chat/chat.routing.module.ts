@@ -8,7 +8,7 @@ const routes: Routes =[
   // { path: ':id', component: SingleFaceSnapComponent,canActivate:[AuthGuard] },
   // { path: ':id', component: SingleFaceSnapComponent },
   // { path: '', component: FaceSnapListComponent },
-  {path: 'chat',component:ChannelComponent,canActivate:[AuthGuard]}
+  {path: 'chat',component:ChannelComponent}
 ]
 @NgModule(
   {
